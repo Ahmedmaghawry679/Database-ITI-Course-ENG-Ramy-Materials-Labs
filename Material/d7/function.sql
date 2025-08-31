@@ -167,7 +167,7 @@ sp_dropmessage @msgnum = 50005;
 select upper(st_fname) from student
 select lower(st_lname) from student
 
---2)convet function
+--2)convret function
 select st_id from student 
 where st_fname='ahmed' --Ahmed
 

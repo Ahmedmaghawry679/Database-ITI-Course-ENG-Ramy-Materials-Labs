@@ -55,3 +55,46 @@ from Instructor I inner join Department D
 on I.Dept_Id = D.Dept_Id
 where Salary = (select min(Salary) from Instructor)
 
+
+
+select *  from (
+	select * , ROW_NUMBER() over (order by salary desc) as RN
+	from Instructor
+	) as newtable
+where RN in(1,2)
+
+select *  from (
+	select * , Dense_Rank() over (order by salary desc) as DR
+	from Instructor
+	) as newtable
+where DR in(1,2)
+
+select * from instructor 
+
+select coalesce(salary, 200) from instructor 
+
+select avg(salary) from Instructor
+
+select S.St_Fname , V.*
+from student S inner join Student V
+on S.St_super = V.St_Id
+
+select * from (
+	select * , ROW_NUMBER() over (Partition by Dept_id order by salary desc) as RN
+	from instructor 
+	) as newtable
+where dept_id is not null and RN in (1,2)
+
+
+
+
+select * from (
+	select * , ROW_NUMBER() over (Partition by Dept_id order by newid()) as RN
+	from student 
+	) as newtable
+where RN = 1
+
+
+
+
+

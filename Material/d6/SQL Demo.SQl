@@ -1,4 +1,4 @@
---Sparse Columns
+`5--Sparse Columns
 ----Sparse columns are another addition to the SQL Server 2008 tool belt. They offer a good trade-off for many applications: taking no space if they are empty and more space if they have data. In other words they optimize storage for NULL values.
 ----Sparse columns are just like ordinary columns with a few limitations. They are defined with the SPARSE keyword and there is no difference on how they are used in data manipulation statements.
 

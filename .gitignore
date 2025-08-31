@@ -1,3 +1,4 @@
 # Ignore SQL Server database files
 *.mdf
 *.ldf
+*.mp4
