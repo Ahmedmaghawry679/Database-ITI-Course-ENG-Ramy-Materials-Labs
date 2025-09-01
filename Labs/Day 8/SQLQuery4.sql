@@ -113,8 +113,80 @@ when not matched then
 insert Values(S.id, S.Quantity);
 
 
+use SD
+
+
+select * from Company.Department
+select * from Company.Project
+select * from Works_On
+select * from HumanResources.Employee
+
+go
+create view vclerk
+as
+	select * from Works_On
+	where Jop = 'Clerk'
+
+go
+Select * from vclerk
+
+go
+create view v_without_budget
+as
+	select pnum, pname from Company.Project
+
+go
+select * from v_without_budget
+
+go
+create view v_count
+as
+	select P.Pname , count(W.jop) as NumOfJops
+	from Works_On W inner join Company.Project P
+	on W.ProjectNo = p.Pnum
+	group by P.Pname
+
+
+go
+select * from v_count
 
 
 
+go
+create view v_project_2
+as
+	select * from Works_On
+	where ProjectNo = 2
 
 
+go
+select * from v_project_2
+
+
+go
+alter view v_without_budget
+as
+	select * from Company.Project
+	where pnum = 1 or pnum = 2
+
+go
+select * from v_without_budget
+
+
+drop view vclerk, v_count
+
+
+select * from HumanResources.Employee
+
+go
+create view v5
+as
+	select Enum, Lname from HumanResources.Employee
+	where Dno = 2
+
+
+go
+alter view v5
+as
+	select  Lname from HumanResources.Employee
+	where Lname like '%j%'
